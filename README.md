@@ -1,6 +1,6 @@
 # BalloonPredictionMap
-[!NOTE]
-TODO: update for the Maplibre GL JS rewrite
+> [!NOTE]
+> TODO: update for the Maplibre GL JS rewrite
 
 Show multiple simultaneous CUSF balloon predictions over a map of U.S. restricted airspace. Useful for planning weather balloon launches within the
 continental United States.
