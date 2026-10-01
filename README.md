@@ -1,4 +1,6 @@
 # BalloonPredictionMap
+[!NOTE]
+TODO: update for the Maplibre GL JS rewrite
 
 Show multiple simultaneous CUSF balloon predictions over a map of U.S. restricted airspace. Useful for planning weather balloon launches within the
 continental United States.
@@ -15,10 +17,10 @@ continental United States.
 This website is entirely client-based, so can either be hosted on a server or viewed locally on a computer.
 
 1. either
-    - [download the source code directly](https://github.com/zacharyburnett/BalloonPredictionMap/archive/refs/heads/main.zip) or
+    - [download the source code directly](https://github.com/UMDBPP/BalloonPredictionMap/archive/refs/heads/main.zip) or
     - `git clone` this repository
       ```
-      git clone https://github.com/zacharyburnett/BalloonPredictionMap
+      git clone https://github.com/UMDBPP/BalloonPredictionMap
       ```
 3. open `index.html` in a web browser
 
@@ -50,7 +52,7 @@ To customize launch locations, edit the file `launch_locations.geojson` with lau
 ```
 
 Also, you can change the starting location of the map view here:
-https://github.com/zacharyburnett/BalloonPredictionMap/blob/7a8972299190ccea2fa9e5fa07b0e31dda305e7e/index.html#L67
+https://github.com/UMDBPP/BalloonPredictionMap/blob/7a8972299190ccea2fa9e5fa07b0e31dda305e7e/index.html#L67
 
 ## Examples
 
