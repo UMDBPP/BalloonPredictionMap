@@ -675,6 +675,31 @@ async function init_BalloonPredictionMap(container_id){
             BalloonBaseMap.set_show_props_on_click(map, layer_defs, ["Reference", "Predicts"], (feature, popup_coordinates, popup_handle) => {
                 // Filter to only run on public school locations
                 if(feature["source"] === "public_schools"){
+                    // let link_text = "https://www.windy.com/" + feature["geometry"]["coordinates"][1].toFixed(3) + "/" + feature["geometry"]["coordinates"][0].toFixed(3) + "?" + feature["geometry"]["coordinates"][1].toFixed(3) + "," + feature["geometry"]["coordinates"][0].toFixed(3) + ",m:eLYad0r";
+                    let link_text = "https://www.windy.com/" + feature["geometry"]["coordinates"][1].toFixed(3) + "/" + feature["geometry"]["coordinates"][0].toFixed(3);
+                    
+                    let windy_link = document.createElement("a");
+                    windy_link.target = "_blank";
+                    windy_link.href = link_text;
+                    windy_link.innerText = "Windy Link";
+
+                    // Add the link to the popup
+                    popup_handle.getElement().querySelector("pre").after(windy_link);
+
+                    link_text = "https://www.google.com/maps/dir//" + feature["geometry"]["coordinates"][1] + "," + feature["geometry"]["coordinates"][0];
+
+                    let map_link = document.createElement("a");
+                    map_link.target = "_blank";
+                    map_link.href = link_text;
+                    map_link.innerText = "Maps Link";
+
+                    windy_link.after(map_link);
+                    windy_link.appendChild(document.createElement("br"));
+
+                    let last_link = map_link;
+
+
+
                     let feature_name = feature["properties"]["NAME"].replaceAll(" ", "_");
     
                     // Create a button in the popup to create a point
@@ -750,8 +775,12 @@ async function init_BalloonPredictionMap(container_id){
                     });
     
                     // Add the buttons to the popup
-                    popup_handle.getElement().querySelector("pre").after(create_point_btn);
+                    // popup_handle.getElement().querySelector("pre").after(create_point_btn);
+                    last_link.after(create_point_btn);
                     create_point_btn.after(delete_point_btn);
+
+                    last_link.appendChild(document.createElement("br"));
+                    last_link.appendChild(document.createElement("br"));
     
                     
                 // If the target is from the TFR airspaces, add a link to the TFR detail page to the properties
@@ -767,6 +796,27 @@ async function init_BalloonPredictionMap(container_id){
                     // Add the link to the popup
                     popup_handle.getElement().querySelector("pre").after(tfr_link);
 
+                } else if(feature["source"] === "launch_locations" || feature["source"] === "poi"){
+                    let link_text = "https://www.windy.com/" + feature["geometry"]["coordinates"][1].toFixed(3) + "/" + feature["geometry"]["coordinates"][0].toFixed(3);
+                    
+                    let windy_link = document.createElement("a");
+                    windy_link.target = "_blank";
+                    windy_link.href = link_text;
+                    windy_link.innerText = "Windy Link";
+
+                    // Add the link to the popup
+                    popup_handle.getElement().querySelector("pre").after(windy_link);
+
+
+                    link_text = "https://www.google.com/maps/dir//" + feature["geometry"]["coordinates"][1] + "," + feature["geometry"]["coordinates"][0];
+
+                    let map_link = document.createElement("a");
+                    map_link.target = "_blank";
+                    map_link.href = link_text;
+                    map_link.innerText = "Maps Link";
+
+                    windy_link.after(map_link);
+                    windy_link.appendChild(document.createElement("br"));
                 }
             });
     
